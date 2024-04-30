@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header//button[@name='action_vendor_forecast_download_report']" position="inside">
+                <button name="%(vendor_adjustment_request.action_vendor_forecast_download_report)d" type="action" string="Download Report" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//header//button[@name='action_view_sale_advance_payment_inv']" position="before">
+                <button name="%(vendor_adjustment_request.action_vendor_adjustment_request_form)d" type="action" string="Adjustment Request"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_sale_order_form" model="ir.ui.view">
+    <field name="name">sale.order.form</field>
+    <field name="model">sale.order</field>
+    <field name="arch" type="xml">
+      <xpath expr="//header//button[@name='action_view_sale_advance_payment_inv']" position="before">
+        <button name="%(vendor_adjustment_request.action_vendor_adjustment_request_wizard_form)d" string="Adjustment Request" type="action"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

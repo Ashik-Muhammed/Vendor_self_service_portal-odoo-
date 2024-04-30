@@ -1,0 +1,7 @@
+<odoo>
+  <record id="menu_vendor_forecast" model="ir.ui.menu">
+    <field name="name">Forecast</field>
+    <field name="parent_id" ref="vendor_self_service_portal.menu_vendor_self_service_portal"/>
+    <field name="action" ref="vendor_forecast.action_vendor_forecast_list"/>
+  </record>
+</odoo>

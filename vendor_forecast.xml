@@ -1,0 +1,17 @@
+<odoo>
+    <record id="access_vendor_forecast_vendor" model="ir.model.access">
+        <field name="name">Vendors - vendor.forecast</field>
+        <field name="model_id" ref="vendor_adjustment_request.model_vendor_forecast"/>
+        <field name="group_id" ref="vendor_adjustment_request.group_vendor"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="action_vendor_forecast_list" model="ir.actions.act_window">
+    <field name="name">Forecast</field>
+    <field name="res_model">vendor.forecast</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('vendor_id', '=', uid)]</field>
+  </record>
+</odoo>

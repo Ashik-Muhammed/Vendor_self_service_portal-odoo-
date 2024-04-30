@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_vendor_adjustment_request_form" model="ir.ui.view">
+        <field name="name">vendor.adjustment.request.form</field>
+        <field name="model">vendor.adjustment.request</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Adjustment Request">
+                <sheet>
+                    <group>
+                        <field name="order_id"/>
+                        <field name="adjustment_detail"/>
+                        <field name="comment"/>
+                    </group>
+                    <group>
+                        <field name="date_request"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_send_email" string="Send Request" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+      <record id="email_template_vendor_adjustment_request" model="mail.template">
+    <field name="name">Vendor Adjustment Request Notification</field>
+    <field name="model_id" ref="vendor_adjustment_request.model_vendor_adjustment_request"/>
+    <field name="subject">New Vendor Adjustment Request for Order ${object.order_id.name}</field>
+    <field name="body_html"><![CDATA[
+        Dear Procurement Team,
+
+        A new vendor adjustment request has been submitted for order ${object.order_id.name}.
+
+        Request Details:
+        Adjustment: ${object.adjustment_detail}
+        Comments: ${object.comment}
+
+        Please review and process the request accordingly.
+
+        Regards,
+        [Your Company Name]
+    ]]></field>
+    <field name="email_from">${object.order_id.partner_id.email or ''}</field>
+    <field name="auto_delete" eval="True"/>
+    <field name="email_to">${(object.order_id.procurement_group_id.email or object.order_id.user_id.email or object.order_id.partner_id.email) and [object.order_id.procurement_group_id.email or object.order_id.user_id.email or object.order_id.partner_id.email] or ['your.email@yourcompany.com']}</field>
+  </record>
+</odoo>
