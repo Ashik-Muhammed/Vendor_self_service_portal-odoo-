@@ -1,0 +1,1 @@
+# Vendor_self_service_portal-odoo-
